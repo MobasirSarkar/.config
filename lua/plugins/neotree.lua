@@ -7,10 +7,6 @@ return {
     "MunifTanjim/nui.nvim",
   },
   cmd = "Neotree",
-  window = {
-    enabled = true,
-    width = 20,
-  },
   keys = {
     {
       "<leader>fe",
@@ -63,6 +59,7 @@ return {
       use_libuv_file_watcher = true,
     },
     window = {
+      width = 28,
       mappings = {
         ["<space>"] = "none",
         ["Y"] = {
