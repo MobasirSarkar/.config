@@ -59,7 +59,7 @@ return {
       use_libuv_file_watcher = true,
     },
     window = {
-      width = 30,
+      width = 28,
       mappings = {
         ["<space>"] = "none",
         ["Y"] = {
