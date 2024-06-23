@@ -7,8 +7,9 @@ opts.relativenumber = true
 
 opts.autoindent = true
 
-opts.shiftwidth = 4
-opts.softtabstop = 4
+opts.tabstop = 3
+opts.shiftwidth = 3
+opts.softtabstop = 3
 opts.expandtab = true
 opts.smarttab = true
 
@@ -38,3 +39,5 @@ opts.hidden = true
 opts.backspace = { "start", "eol", "indent" }
 opts.scrolloff = 8
 opts.termguicolors = true
+
+opts.shiftround = true

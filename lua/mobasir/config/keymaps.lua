@@ -18,3 +18,6 @@ keymaps.set("n", "<C-d>", "<C-d>zz")
 keymaps.set("n", "<C-u>", "<C-u>zz")
 
 keymaps.set("x", "<leader>p", '"_d')
+
+keymaps.set("n", "<C-e>", ":Ex<CR>", { noremap = true, silent = true })
+keymaps.set("n", "<leader>e", ":Lexplore<CR>", { noremap = true, silent = true })

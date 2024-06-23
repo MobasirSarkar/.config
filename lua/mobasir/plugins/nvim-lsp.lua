@@ -10,7 +10,7 @@ return {
 		"hrsh7th/nvim-cmp",
 		"L3MON4D3/LuaSnip",
 		"saadparwaiz1/cmp_luasnip",
-		"j-hui/fidget.nvim",
+		"rafamadriz/friendly-snippets",
 	},
 
 	config = function()
@@ -22,18 +22,45 @@ return {
 			vim.lsp.protocol.make_client_capabilities(),
 			cmp_lsp.default_capabilities()
 		)
-
-		require("mason").setup()
+		local on_attach = function(_, bufnr)
+			local function buf_set_option(...)
+				vim.api.nvim_buf_set_option(bufnr, ...)
+			end
+			buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+			-- Mappings.
+			local opts = { buffer = bufnr, noremap = true, silent = true }
+			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+			vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+			vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+			vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+			vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
+			vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
+			vim.keymap.set("n", "<leader>wl", function()
+				print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+			end, opts)
+			vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, opts)
+			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+			vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+			vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
+			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+			vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+			vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
+			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+		end
+		require("luasnip.loaders.from_vscode").lazy_load()
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"lua_ls",
 				"rust_analyzer",
 				"gopls",
+				"tsserver",
 			},
 			handlers = {
 				function(server_name) -- default handler (optional)
 					require("lspconfig")[server_name].setup({
 						capabilities = capabilities,
+						on_attach = on_attach,
 					})
 				end,
 
@@ -56,6 +83,7 @@ return {
 					local lspconfig = require("lspconfig")
 					lspconfig.lua_ls.setup({
 						capabilities = capabilities,
+						on_attach = on_attach,
 						settings = {
 							Lua = {
 								runtime = { version = "Lua 5.1" },
@@ -82,17 +110,17 @@ return {
 				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
 				["<C-y>"] = cmp.mapping.confirm({ select = true }),
 				["<C-Space>"] = cmp.mapping.complete(),
+				["<C-E>"] = cmp.mapping.abort(),
 			}),
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
-				{ name = "luasnip" }, -- For luasnip users.
+				{ name = "luasnip" },
 			}, {
 				{ name = "buffer" },
 			}),
 		})
 
 		vim.diagnostic.config({
-			-- update_in_insert = true,
 			float = {
 				focusable = false,
 				style = "minimal",

@@ -1,4 +1,5 @@
 return {
+	-- lualine
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -12,50 +13,29 @@ return {
 			})
 		end,
 	},
+
+	-- for float , Add & Remove files
 	{
 		"stevearc/dressing.nvim",
 		event = "VeryLazy",
 	},
-	{
-		"echasnovski/mini.indentscope",
-		version = false, -- wait till new 0.7.0 release to put it back on semver
-		opts = {
-			-- symbol = "?",
-			symbol = "|",
-			options = { try_as_border = true },
-		},
-		init = function()
-			vim.api.nvim_create_autocmd("FileType", {
-				pattern = {
-					"alpha",
-					"dashboard",
-					"fzf",
-					"help",
-					"lazy",
-					"lazyterm",
-					"mason",
-					"neo-tree",
-					"notify",
-					"toggleterm",
-					"Trouble",
-					"trouble",
-				},
-				callback = function()
-					vim.b.miniindentscope_disable = true
-				end,
-			})
-		end,
-	},
+	-- sidebar indent
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
-		opts = {
-			timeout = 5000,
-		},
+		opts = {},
 		config = function()
 			require("ibl").setup()
 		end,
 	},
+	{
+
+		"rcarriga/nvim-notify",
+		opts = {
+			timeout = 1000,
+		},
+	},
+	-- For notify and messages
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
@@ -66,13 +46,6 @@ return {
 		},
 		config = function()
 			require("noice").setup({
-				lsp = {
-					override = {
-						["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-						["vim.lsp.util.stylize_markdown"] = true,
-						["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
-					},
-				},
 				presets = {
 					bottom_search = true, -- use a classic bottom cmdline for search
 					command_palette = true, -- position the cmdline and popupmenu together
@@ -80,7 +53,6 @@ return {
 					inc_rename = false, -- enables an input dialog for inc-rename.nvim
 					lsp_doc_border = false, -- add a border to hover docs and signature help
 				},
-
 				-- you can enable a preset for easier configuration
 				cmdline = {
 					view = "cmdline",
@@ -111,4 +83,37 @@ return {
 			end)
 		end,
 	},
+
+	-- for the tag with file name
+	{
+		"b0o/incline.nvim",
+		config = function()
+			local helpers = require("incline.helpers")
+			local devicons = require("nvim-web-devicons")
+			require("incline").setup({
+				window = {
+					padding = 0,
+					margin = { horizontal = 1 },
+				},
+				render = function(props)
+					local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+					if filename == "" then
+						filename = "[No Name]"
+					end
+					local ft_icon, ft_color = devicons.get_icon_color(filename)
+					local modified = vim.bo[props.buf].modified
+					return {
+						ft_icon and { " ", ft_icon, " ", guibg = ft_color, guifg = helpers.contrast_color(ft_color) }
+							or "",
+						" ",
+						{ filename, gui = modified and "bold,italic" or "bold" },
+						" ",
+						guibg = "#44406e",
+					}
+				end,
+			})
+		end,
+		event = "VeryLazy",
+	},
+	{},
 }
