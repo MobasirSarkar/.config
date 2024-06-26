@@ -7,7 +7,7 @@ return {
 			local lualine = require("lualine")
 			lualine.setup({
 				options = {
-					theme = "everforest",
+					theme = "tokyonight",
 					icon_enabled = true,
 				},
 			})
