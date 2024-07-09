@@ -12,6 +12,7 @@ opts.shiftwidth = 3
 opts.softtabstop = 3
 opts.expandtab = true
 opts.smarttab = true
+opts.background = "dark"
 
 opts.hlsearch = false
 opts.incsearch = true
@@ -40,4 +41,6 @@ opts.backspace = { "start", "eol", "indent" }
 opts.scrolloff = 8
 opts.termguicolors = true
 
-opts.shiftround = true
+opts.fillchars = { eob = " " }
+
+opts.swapfile = false

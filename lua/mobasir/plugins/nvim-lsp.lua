@@ -130,5 +130,6 @@ return {
 				prefix = "",
 			},
 		})
+		require("lspconfig").protols.setup({})
 	end,
 }
