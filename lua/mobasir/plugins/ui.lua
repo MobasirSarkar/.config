@@ -7,7 +7,7 @@ return {
 			local lualine = require("lualine")
 			lualine.setup({
 				options = {
-					theme = "tokyonight",
+					theme = "NeoSolarized",
 					icon_enabled = true,
 				},
 			})
@@ -34,6 +34,11 @@ return {
 		opts = {
 			timeout = 500,
 		},
+		config = function()
+			require("notify").setup({
+				background_color = "#000000",
+			})
+		end,
 	},
 	-- For notify and messages
 	{
@@ -115,5 +120,12 @@ return {
 		end,
 		event = "VeryLazy",
 	},
-	{},
+	{
+		"nvim-tree/nvim-web-devicons",
+		config = function()
+			require("nvim-web-devicons").setup({
+				color_icons = true,
+			})
+		end,
+	},
 }

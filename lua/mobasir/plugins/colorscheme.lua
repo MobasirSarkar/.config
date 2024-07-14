@@ -76,4 +76,26 @@ return {
 			vim.cmd([[colorscheme everforest]])
 		end,
 	},
+	{
+		"craftzdog/solarized-osaka.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {
+			style = "dark",
+			transparent = true,
+			enable_italics = true,
+			styles = {
+				comments = { italic = true },
+				keywords = { bold = true },
+				functions = { italic = true },
+				variables = {},
+				string = { italic = true },
+				underline = true,
+				undercurl = true,
+			},
+		},
+		config = function()
+			require("solarized-osaka").setup()
+		end,
+	},
 }
