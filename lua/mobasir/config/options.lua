@@ -37,7 +37,7 @@ opts.signcolumn = "yes"
 
 opts.hidden = true
 
-opts.backspace = { "start", "eol", "indent" }
+opts.backspace = { "start", "indent" , "eol" }
 opts.scrolloff = 8
 opts.termguicolors = true
 
