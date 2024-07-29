@@ -37,6 +37,8 @@ return {
 			ui.oceanic_material_background = "ocean"
 			ui.oceanic_material_allow_undercurl = 1
 			ui.oceanic_material_allow_bold = 1
+
+			vim.cmd([[colorscheme oceanic_material]])
 		end,
 	},
 	{
@@ -73,7 +75,6 @@ return {
 				ui_contrast = "high",
 				diagnostic_virtual_text = "colored",
 			})
-			vim.cmd([[colorscheme everforest]])
 		end,
 	},
 	{

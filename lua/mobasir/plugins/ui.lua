@@ -32,12 +32,12 @@ return {
 
 		"rcarriga/nvim-notify",
 		opts = {
-			timeout = 500,
+			timeout = 1000,
 		},
-		config = function()
-			require("notify").setup({
-				background_color = "#000000",
-			})
+		config = function(_, opts)
+			require("notify").setup(vim.tbl_extend("keep", {
+				background_colour = "#000000",
+			}, opts))
 		end,
 	},
 	-- For notify and messages
