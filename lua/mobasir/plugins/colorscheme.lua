@@ -37,8 +37,6 @@ return {
 			ui.oceanic_material_background = "ocean"
 			ui.oceanic_material_allow_undercurl = 1
 			ui.oceanic_material_allow_bold = 1
-
-			vim.cmd([[colorscheme oceanic_material]])
 		end,
 	},
 	{
@@ -97,6 +95,63 @@ return {
 		},
 		config = function()
 			require("solarized-osaka").setup()
+		end,
+	},
+	{
+		"HoNamDuong/hybrid.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+		config = function()
+			require("hybrid").setup({
+				terminal_colors = true,
+				undercurl = true,
+				underline = true,
+				bold = true,
+				italic = {
+					strings = false,
+					emphasis = true,
+					comments = true,
+					folds = true,
+				},
+				strikethrough = true,
+				inverse = true,
+				transparent = false,
+			})
+		end,
+	},
+	{
+		"rose-pine/neovim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+		name = "rose-pine",
+		config = function()
+			require("rose-pine").setup({
+				variant = "moon",
+				dark_variant = "moon",
+				extends_background_behind_borders = true,
+
+				enable = {
+					legacy_highlights = true,
+					migrations = true,
+				},
+
+				styles = {
+					bold = true,
+					italic = true,
+					transparency = true,
+				},
+
+				pallete = {
+					moon = {
+						surface = "#1f1d2e",
+						overlay = "#000000",
+					},
+				},
+			})
+
+			vim.cmd([[colorscheme rose-pine-moon]])
 		end,
 	},
 }

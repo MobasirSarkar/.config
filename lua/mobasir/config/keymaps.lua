@@ -10,8 +10,8 @@ keymaps.set("n", "<leader>Y", [["+Y]])
 
 keymaps.set("n", "<C-s>", "<cmd>:w<CR>")
 
-keymaps.set("v", "J", ":m '>+1<CR>gv=gv")
-keymaps.set("v", "L", ":m '>-2<CR>gv=gv")
+keymaps.set("v", "<C-k>", ":m '>+1<CR>gv=gv")
+keymaps.set("v", "<C-j>", ":m '>-2<CR>gv=gv")
 
 keymaps.set("n", "J", "mzJ`z")
 keymaps.set("n", "<C-d>", "<C-d>zz")
