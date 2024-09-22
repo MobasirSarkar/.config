@@ -54,7 +54,7 @@ return {
 				"lua_ls",
 				"rust_analyzer",
 				"gopls",
-				"tsserver",
+				"ts_ls",
 			},
 			handlers = {
 				function(server_name) -- default handler (optional)
@@ -92,6 +92,13 @@ return {
 								},
 							},
 						},
+					})
+				end,
+				erlangls = function()
+					local lspconfig = require("lspconfig")
+					lspconfig.erlangls.setup({
+						capabilities = capabilities,
+						on_attach = on_attach,
 					})
 				end,
 			},

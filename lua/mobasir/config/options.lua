@@ -1,7 +1,5 @@
 local opts = vim.opt
 
-opts.clipboard:append("unnamedplus")
-
 opts.nu = true
 opts.relativenumber = true
 
@@ -37,7 +35,7 @@ opts.signcolumn = "yes"
 
 opts.hidden = true
 
-opts.backspace = { "start", "indent" , "eol" }
+opts.backspace = { "start", "indent", "eol" }
 opts.scrolloff = 8
 opts.termguicolors = true
 
