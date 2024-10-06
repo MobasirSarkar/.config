@@ -1,31 +1,5 @@
 return {
 	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {},
-		config = function()
-			require("tokyonight").setup({
-				style = "dark",
-				transparent = true,
-				terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
-				styles = {
-					comments = { italic = true },
-					keywords = { italic = true },
-					functions = {},
-					variables = {},
-					sidebars = "transparent", -- style for sidebars, see below
-					floats = "dark", -- style for floating windows
-				},
-				sidebars = { "qf", "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
-				day_brightness = 0.2, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
-				hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
-				dim_inactive = false, -- dims inactive windows
-				lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
-			})
-		end,
-	},
-	{
 		"glepnir/oceanic-material",
 		lazy = false,
 		priority = 1000,
@@ -73,7 +47,6 @@ return {
 				ui_contrast = "high",
 				diagnostic_virtual_text = "colored",
 			})
-			vim.cmd([[colorscheme everforest]])
 		end,
 	},
 	{
@@ -117,40 +90,38 @@ return {
 				},
 				strikethrough = true,
 				inverse = true,
-				transparent = false,
+				transparent = true,
 			})
 		end,
 	},
 	{
-		"rose-pine/neovim",
+		"sho-87/kanagawa-paper.nvim",
 		lazy = false,
 		priority = 1000,
 		opts = {},
-		name = "rose-pine",
 		config = function()
-			require("rose-pine").setup({
-				variant = "moon",
-				dark_variant = "moon",
-				extends_background_behind_borders = true,
-
-				enable = {
-					legacy_highlights = true,
-					migrations = true,
-				},
-
-				styles = {
-					bold = true,
-					italic = true,
-					transparency = true,
-				},
-
-				pallete = {
-					moon = {
-						surface = "#1f1d2e",
-						overlay = "#000000",
-					},
+			require("kanagawa-paper").setup({
+				undercurl = true,
+				transparent = true,
+				commentStyle = { italic = true },
+				functionStyle = { italic = true },
+			})
+		end,
+	},
+	{
+		"AlexvZyl/nordic.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("nordic").setup({
+				bold_keywords = false,
+				italic_comments = true,
+				transparent = {
+					bg = true,
+					float = false,
 				},
 			})
+			vim.cmd([[colorscheme nordic]])
 		end,
 	},
 }
