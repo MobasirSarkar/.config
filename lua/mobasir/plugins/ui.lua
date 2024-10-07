@@ -7,7 +7,7 @@ return {
 			local lualine = require("lualine")
 			lualine.setup({
 				options = {
-					theme = "NeoSolarized",
+					theme = "material",
 					icon_enabled = true,
 				},
 			})
@@ -89,7 +89,7 @@ return {
 		end,
 	},
 
-	-- for the tag with file name
+	-- Tagging Files
 	{
 		"b0o/incline.nvim",
 		config = function()
