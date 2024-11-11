@@ -92,6 +92,7 @@ return {
 				inverse = true,
 				transparent = true,
 			})
+			vim.cmd([[colorscheme hybrid]])
 		end,
 	},
 	{
@@ -117,11 +118,30 @@ return {
 				bold_keywords = false,
 				italic_comments = true,
 				transparent = {
-					bg = true,
+					bg = false,
 					float = false,
 				},
 			})
-			vim.cmd([[colorscheme nordic]])
 		end,
+	},
+	{
+		"rose-pine/neovim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("rose-pine").setup({
+				variant = "moon",
+				styles = {
+					transparency = true,
+					italic = false,
+				},
+			})
+		end,
+	},
+	{
+		"talha-akram/noctis.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function() end,
 	},
 }

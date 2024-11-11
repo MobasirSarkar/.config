@@ -5,8 +5,7 @@ return {
 		dependencies = {
 			"JoosepAlviste/nvim-ts-context-commentstring",
 		},
-		opts = {
-		},
+		opts = {},
 		config = function()
 			require("Comment").setup()
 			require("ts_context_commentstring").setup({

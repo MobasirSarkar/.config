@@ -55,6 +55,15 @@ return {
 				"rust_analyzer",
 				"gopls",
 				"ts_ls",
+				"jsonls",
+				"tailwindcss",
+				"pyright",
+				"elp",
+				"volar",
+				"unocss",
+				"stylua",
+				"biome",
+				"prettier",
 			},
 			handlers = {
 				function(server_name) -- default handler (optional)
@@ -99,6 +108,13 @@ return {
 					lspconfig.erlangls.setup({
 						capabilities = capabilities,
 						on_attach = on_attach,
+					})
+				end,
+				sqls = function()
+					local lspconfig = require("lspconfig")
+					lspconfig.sqls.setup({
+						on_attach = on_attach,
+						capabilities = capabilities,
 					})
 				end,
 			},
