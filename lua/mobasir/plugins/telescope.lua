@@ -25,6 +25,7 @@ return {
 				["ui-select"] = {
 					require("telescope.themes").get_dropdown({}),
 				},
+				fzf = {},
 			},
 			pickers = {
 				find_files = {
@@ -42,6 +43,10 @@ return {
 		vim.keymap.set("n", "<leader>pw", function()
 			local word = vim.fn.expand("<cword>")
 			builtin.grep_string({ search = word })
+		end)
+		vim.keymap.set("n", "<leader>mg", function()
+			local live_multigrep = require("mobasir.config.telescope.multigrep").live_multigrep
+			live_multigrep()
 		end)
 		vim.keymap.set("n", "<leader>ww", function()
 			local word = vim.fn.expand("<cWORD>")

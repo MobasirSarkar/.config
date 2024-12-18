@@ -102,13 +102,6 @@ return {
 						},
 					})
 				end,
-				erlangls = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.erlangls.setup({
-						capabilities = capabilities,
-						on_attach = on_attach,
-					})
-				end,
 			},
 		})
 

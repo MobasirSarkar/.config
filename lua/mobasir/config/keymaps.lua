@@ -17,6 +17,7 @@ keymaps.set("n", "J", "mzJ`z")
 keymaps.set("n", "<C-d>", "<C-d>zz")
 keymaps.set("n", "<C-u>", "<C-u>zz")
 
+keymaps.set("n", "<leader><leader>s", "<cmd>source %<CR>")
 keymaps.set("x", "<leader>p", '"_d')
 
 keymaps.set("n", "<C-e>", "<cmd>Oil<CR>", { noremap = true, silent = true })

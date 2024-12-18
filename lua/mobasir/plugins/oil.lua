@@ -18,8 +18,12 @@ return {
 				["_"] = { "actions.open_cwd", mode = "n" },
 				["`"] = "actions.refresh",
 				["/"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
+				["h."] = { "actions.toggle_hidden", mode = "n" },
 			},
 			use_default_keymaps = false,
+			view_options = {
+				show_hidden = true,
+			},
 		})
 	end,
 }
