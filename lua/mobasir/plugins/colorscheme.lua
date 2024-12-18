@@ -47,6 +47,7 @@ return {
 				ui_contrast = "high",
 				diagnostic_virtual_text = "colored",
 			})
+			vim.cmd([[colorscheme everforest]])
 		end,
 	},
 	{
@@ -92,7 +93,6 @@ return {
 				inverse = true,
 				transparent = true,
 			})
-			vim.cmd([[colorscheme hybrid]])
 		end,
 	},
 	{

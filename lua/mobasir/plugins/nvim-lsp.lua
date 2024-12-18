@@ -15,13 +15,15 @@ return {
 
 	config = function()
 		local cmp = require("cmp")
-		local cmp_lsp = require("cmp_nvim_lsp")
-		local capabilities = vim.tbl_deep_extend(
+		--[[ 		local cmp_lsp = require("cmp_nvim_lsp") ]]
+		--[[ local capabilities = vim.tbl_deep_extend(
 			"force",
 			{},
 			vim.lsp.protocol.make_client_capabilities(),
 			cmp_lsp.default_capabilities()
-		)
+		) ]]
+
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
 		local on_attach = function(_, bufnr)
 			local function buf_set_option(...)
 				vim.api.nvim_buf_set_option(bufnr, ...)
@@ -58,12 +60,9 @@ return {
 				"jsonls",
 				"tailwindcss",
 				"pyright",
-				"elp",
 				"volar",
 				"unocss",
-				"stylua",
 				"biome",
-				"prettier",
 			},
 			handlers = {
 				function(server_name) -- default handler (optional)
@@ -108,13 +107,6 @@ return {
 					lspconfig.erlangls.setup({
 						capabilities = capabilities,
 						on_attach = on_attach,
-					})
-				end,
-				sqls = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.sqls.setup({
-						on_attach = on_attach,
-						capabilities = capabilities,
 					})
 				end,
 			},
