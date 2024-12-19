@@ -1,23 +1,29 @@
 return {
-	"saghen/blink.cmp",
-	dependencies = "rafamadriz/friendly-snippets",
+	{
+		"saghen/blink.cmp",
+		dependencies = "rafamadriz/friendly-snippets",
 
-	lazy = false,
-	opts = {
-		keymap = { preset = "default" },
-		appereance = {
-			use_nvim_cmp_as_default = true,
-		},
-		signature = { enabled = true },
-		sources = {
-			default = { "lsp", "path", "luasnip", "buffer" },
-		},
-		completion = {
-			menu = {
-				draw = {
-					columns = { { "kind_icon" }, { "label", "label_description", gap = 2 } },
+		version = "v0.*",
+
+		---@module 'blink.cmp'
+		---@type blink.cmp.Config
+		opts = {
+			keymap = { preset = "default" },
+			appearance = {
+				use_nvim_cmp_as_default = true,
+				nerd_font_variant = "mono",
+			},
+			sources = {
+				default = { "lsp", "path", "snippets", "buffer" },
+			},
+			completion = {
+				menu = {
+					draw = {
+						columns = { { "label", "label_description", gap = 2 } },
+					},
 				},
 			},
 		},
+		opts_extend = { "sources.default" },
 	},
 }
